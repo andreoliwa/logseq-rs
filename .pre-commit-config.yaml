@@ -9,9 +9,7 @@ ci:
   # These hooks are meant to be run locally only.
   # They fail on pre-commit.ci with "Executable `cargo` not found".
   # Using "language: rust" also didn't work because these are not hooks written in Rust.
-  # This one also fails for Go:
-  # Executable `golangci-lint` not found
-  skip: [fmt, cargo-check, clippy, golangci-lint]
+  skip: [fmt, cargo-check, clippy]
 
 default_language_version:
   python: python3.11
@@ -23,7 +21,6 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
-      - id: debug-statements
   - repo: https://github.com/pappasam/toml-sort
     rev: v0.24.2
     hooks:
@@ -33,16 +30,6 @@ repos:
     rev: v0.5.1
     hooks:
       - id: keep-sorted
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.4
-    hooks:
-      - id: ruff-format
-      - id: ruff
-  - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.10.0
-    hooks:
-      - id: python-check-mock-methods
-      - id: rst-backticks
   - repo: https://github.com/openstack/bashate
     rev: 2.1.1
     hooks:
@@ -78,10 +65,3 @@ repos:
     rev: v0.0.2
     hooks:
       - id: sync-pre-commit-deps
-  - repo: https://github.com/golangci/golangci-lint
-    rev: v1.63.1
-    hooks:
-      - id: golangci-lint
-        name: golangci-lint
-        entry: golangci-lint run
-        language: system
