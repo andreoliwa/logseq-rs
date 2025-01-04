@@ -6,10 +6,10 @@ gpg_sign = true
 major_version_zero = true
 name = "cz_conventional_commits"
 post_bump_hooks = [
-  "make .release-post-bump",
+  "make .release-post-bump"
 ]
 pre_bump_hooks = [
-  "make build",
+  "make build"
 ]
 tag_format = "v$version"
 update_changelog_on_bump = true
@@ -20,5 +20,5 @@ version_files = [
   "python/logseq_doctor/__init__.py",
   "README.md:github",
   "rust/logseq-doctor/Cargo.toml:version =",
-  "rust/logseq/Cargo.toml:version =",
+  "rust/logseq/Cargo.toml:version ="
 ]
